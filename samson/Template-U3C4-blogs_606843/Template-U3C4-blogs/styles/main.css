@@ -1,0 +1,38 @@
+#container{
+    display: flex;
+}
+#sidebar{
+    width: 200px;
+    /* border: 1px solid red; */
+}
+
+#blog{
+    display: flex;
+    margin-top: 20px;
+}
+#blog>img{
+    width: 500px;
+    height: 300px;
+}
+#blog>div:nth-child(2){
+    width: 200px;
+    margin-left: 30px;
+}
+#blog>div:nth-child(1){
+    width: 200px;
+    margin-left: 30px;
+}
+#main>div{
+    margin-left: 30px;
+}
+#main>div>div{
+   width: 800px;
+   margin-top: 20px;
+   margin-bottom: 20px;
+}
+#main>div>img{
+    width: 600px;
+    height: 300px;
+}
+
+

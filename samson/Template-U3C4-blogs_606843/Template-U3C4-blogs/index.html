@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Home</title>
+    <link rel="stylesheet" href="./styles/main.css">
+  </head>
+
+  <body>
+    <div id="container">
+      <div id="sidebar">
+        <!--DO NOT CHANGE THIS ID's-->
+        <!--Append the horizontal navbar(sidebar) here only-->
+
+        
+      </div>
+
+      <div id="main">
+        <!--DO NOT CHANGE THIS ID's-->
+        <!--Append psychology blogs here only-->
+      </div>
+    </div>
+
+
+  </body>
+</html>
+<script type="module">
+
+import sidebar from "./components/sidebar.js"
+//console.log(sidebar)
+
+document.getElementById("sidebar").innerHTML=sidebar();
+let main = document.getElementById("main")
+
+import { apiCall, appendArticles } from "./scripts/main.js"
+//console.log(apiCall)
+//console.log(appendArticles)
+
+let data = apiCall(`https://blog-search-u3c4.herokuapp.com/api/blogs/psychology`)
+let data1 = data.then(function(resp){
+  //console.log(resp)
+  //appendData(resp)
+  appendArticles(resp,main)
+}).catch(function(err){
+  console.log(err)
+})
+
+
+//document.getElementById('searchbar').addEventListener("input",search)
+document.getElementById('searchbar').addEventListener("keypress",()=>{
+  search(event)
+})
+//keypress
+
+let search=async (e)=>{
+     if(e.code=="Enter"){
+
+     
+      // try{
+            let input = document.getElementById('searchbar').value
+            localStorage.setItem("search_term",JSON.stringify(input));
+      //      //console.log(input)
+      //      //explained
+      //       let res = await fetch(`https://blog-search-u3c4.herokuapp.com/api/search/?q=${input}`)
+      //       let data = await res.json();
+      //       console.log(data)
+             window.location.href="./search.html"
+      // }
+      // catch(err){
+      //   console.log(err)
+      // }
+      }
+      
+}
+
+
+
+</script>
